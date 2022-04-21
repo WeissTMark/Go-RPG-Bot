@@ -1,0 +1,4 @@
+Some sort of call/response type game
+Level tracking
+Character/RPG info keeping
+Random time events
