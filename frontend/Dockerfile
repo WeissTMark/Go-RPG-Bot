@@ -1,20 +1,13 @@
-# pull official base image
-FROM node:16.14.2-alpine
-# set working directory
-WORKDIR /app
-ENV CHOKIDAR_USEPOLLING = true
+FROM node:14-alpine3.12 as base
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+ENV CHOKIDAR_USEPOLLING true
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+COPY package.json /usr/src/app
+RUN yarn install
 
-# add app
-COPY . ./
-
-# start app
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
+#ENTRYPOINT ["tail"]
+#CMD ["-f","/dev/null"]

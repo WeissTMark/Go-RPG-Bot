@@ -1,7 +1,10 @@
+import React from 'react';
+import Header from '../modules/appbar';
+
 export default function Home() {
     return (
-      <main style={{ padding: "1rem 0" }}>
-        <h2>Invoices</h2>
-      </main>
+      <>
+         Hello
+      </>
     );
   }
